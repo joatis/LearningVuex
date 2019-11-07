@@ -1,20 +1,25 @@
 {
   "students": [
     {
-      "name": "Alex",
+      "firstName": "Alex",
       "id": 0
     },
     {
       "id": 1,
-      "name": "Jane"
+      "firstName": "Jane"
     },
     {
-      "name": "Jill",
+      "firstName": "Jill",
       "id": 2
     },
     {
-      "name": "Tom A",
+      "firstName": "Tom A",
       "id": 3
+    },
+    {
+      "firstName": "bill",
+      "lastName": "stanley",
+      "id": 4
     }
   ]
 }
