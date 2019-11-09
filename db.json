@@ -2,18 +2,22 @@
   "students": [
     {
       "firstName": "Alex",
+      "lastName": "Jones",
       "id": 0
     },
     {
-      "id": 1,
-      "firstName": "Jane"
+      "firstName": "Jane",
+      "lastName": "Doe",
+      "id": 1
     },
     {
       "firstName": "Jill",
+      "lastName": "Stevenson",
       "id": 2
     },
     {
       "firstName": "Tom A",
+      "lastName": "Dude",
       "id": 3
     },
     {
