@@ -26,6 +26,7 @@
 <script>
 import axios from "axios";
 import Students from "./Students";
+import { mapMutations } from 'vuex';
 
 export default {
   data() {
@@ -36,7 +37,7 @@ export default {
   },
   methods: {
     async submit() {
-      axios.post("http://localhost:3000/students", { firstName: this.firstName, lastName: this.lastName });
+      this.$store.dispatch('createStudent', { firstName: this.firstName, lastName: this.lastName });
     }
   },
   components: {
