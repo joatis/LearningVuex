@@ -4,9 +4,22 @@ import axios from "axios";
 
 Vue.use(Vuex);
 
+const errorSystem = {
+    state: {
+        show: false,
+        error: 'Error'
+    },
+    mutations: {
+        showError(state, message) {
+            state.show = true;
+            state.text = message;
+        }
+    }
+} 
+
 export default new Vuex.Store({
     state: {
-        students: []
+        students: []        
     },
     getters: {
         students: state => state.students.map(s => ({
@@ -25,12 +38,18 @@ export default new Vuex.Store({
         editStudent(state, student) { 
             const index = state.students.findIndex(s => s.id == student.id);
             Vue.set(state.students, index, student);
-        }
+        },
+
     },
     actions: {
         async getStudents(context) {
-            const students = (await axios.get('http://localhost:3000/students')).data;
-            context.commit('setStudents', students);
+            try {
+                const students = (await axios.get('http://localhost:3000/students')).data;
+                context.commit('setStudents', students);
+            } catch (error) {
+                context.commit('showError', error);
+            }
+            
         },
         async createdStudent(context, names) {
             const student = (await axios.post("http://localhost:3000/students", names));
@@ -40,5 +59,8 @@ export default new Vuex.Store({
             const student = (await axios.put(`http://localhost:3000/students/${id}`, names)).data;
             context.commit('editStudent', student);
         }
+    },
+    modules: { 
+        error: errorSystem
     }
 });
